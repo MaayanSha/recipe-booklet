@@ -6,15 +6,23 @@ type LayoutHeaderProps = {
     search: boolean,
     children?: ReactNode,
 }
-export const LayoutHeader = ({title, search, children=null}: LayoutHeaderProps) => {
+export const LayoutHeader = ({search, children=null}: LayoutHeaderProps) => {
     return(
-    <div className="parent">
-        <div className="child">
-            {children}
+        <>
+    <nav className="navbar fixed-top navbar-light bg-light">
+        <div className="nav-item">
+        {children}
         </div>
-        <h4 className="child">
-        {title}
-        {search? <input type="text" placeholder="Search" /> : null}
-        </h4>
-    </div>
+        <div className="nav-item">
+            {search?
+                <div className="search__container">
+                <p className="search__title">
+                    Find anything
+                </p>
+                <input className="search__input" type="text" placeholder="Search" />
+            </div>
+                : null}
+        </div>
+    </nav>
+        </>
     )}

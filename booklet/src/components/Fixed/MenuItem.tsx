@@ -1,5 +1,6 @@
 import React, { ReactElement} from "react";
 import {Link} from "react-router-dom";
+import "./../../CSS/layout_header.css";
 
 type MenuItemProps = {
     title: string,
@@ -20,13 +21,10 @@ export const MenuItem = ({title, link}: MenuItemProps) => {
 
 export const MenuGroup = ({title, children}: MenuGroupProps) => {
     return(
-    <div>
-        <h4>{title}</h4>
-        <ul className="list-group list-group-flush">
-            {children.map((child) =>
-                <li className="list-group-item">{child}</li>
-            )}
-        </ul>
+    <div className="menu-content">
+        {children.map((child) =>
+            <a className="list-inline">{child}</a>
+        )}
     </div>
     )
 }

@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
-import {ReactNode} from "react";
+import React, {JSX, ReactComponentElement, ReactNode} from "react";
 import {LayoutHeader} from "./LayoutHeader";
 import {LayoutFooter} from "./LayoutFooter";
 import {Menu} from "./Fixed/Menu";
+import "../CSS/content.css";
 
 type LandingProps = {
-    children: ReactNode,
+    children: ReactNode
 }
 export default function Layout({children}: LandingProps) {
     return (
@@ -14,7 +15,6 @@ export default function Layout({children}: LandingProps) {
         <div>
             {children}
         </div>
-        <LayoutFooter text={"all rights reserved"} />
         </>
     );
 }
