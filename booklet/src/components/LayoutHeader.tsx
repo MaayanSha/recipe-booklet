@@ -1,5 +1,6 @@
 import {ReactNode} from "react";
 import '../CSS/layout_header.css';
+import {useNavigate} from "react-router-dom";
 
 type LayoutHeaderProps = {
     title: string,
@@ -7,9 +8,12 @@ type LayoutHeaderProps = {
     children?: ReactNode,
 }
 export const LayoutHeader = ({search, children=null}: LayoutHeaderProps) => {
+    const navigate = useNavigate();
+    const adminButton = <button onClick={()=> navigate("/admin")}>Admin?</button>
     return(
         <>
     <nav className="navbar fixed-top navbar-light bg-light">
+        {adminButton}
         <div className="nav-item">
         {children}
         </div>

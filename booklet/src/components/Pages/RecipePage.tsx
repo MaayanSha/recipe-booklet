@@ -8,15 +8,21 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../store/store";
 import {fetchRecipesAsync} from "../store/RecipeInventorySlice";
 
-export const RecipePage = () => {
+export interface RecipePageProps extends PageProps {
+    isEditable: boolean;
+}
+export const RecipePage = ({isEditable}:RecipePageProps) => {
     const recipes = useSelector((state: RootState) => state.recipeInventory.recipes);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(fetchRecipesAsync());
     },[]);
     return(
-        <Select source={"inventory"} className={"inventory-select"}>
-            <RecipeList recipes={recipes}/>
+        <>
+        {isEditable && <button className="add-button">Add</button>}
+    <Select source={"inventory"} className={"inventory-select"}>
+            <RecipeList recipes={recipes} />
         </Select>
+        </>
     )
 }

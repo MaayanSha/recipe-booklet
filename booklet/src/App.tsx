@@ -1,23 +1,21 @@
-import React, {useEffect} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { Route, Routes} from "react-router-dom";
-import {Landing} from "./components/Landing";
 import Layout from "./components/Layout";
-import {RecipeList} from "./components/Features/RecipeList";
-import {getIngredientInventory} from "./components/Data/FetchIngredientInventory";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "./components/store/store";
-import {AppDispatch} from "./components/store/store";
-import {fetchRecipesAsync} from "./components/store/RecipeInventorySlice";
-import Select from "./components/UI/Select";
 import {RecipePage} from "./components/Pages/RecipePage";
+import {AdminLogin} from "./components/Pages/AdminLogin";
+import {useSelector} from "react-redux";
+import {RootState} from "./components/store/store";
 
 function App() {
-
-  return (
+    const adminMode = useSelector((state: RootState) => state.adminMode);
+    return (
       <Routes>
-          <Route path="/" element={<Layout children={<RecipePage />} />} />
+          <Route path="/" element={
+              <Layout children={<RecipePage isEditable={adminMode.adminMode} />} />} />
+          <Route path="/admin" element={
+              <AdminLogin />
+          }/>
       </Routes>
   );
 }

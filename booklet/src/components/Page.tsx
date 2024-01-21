@@ -12,5 +12,5 @@ import React, {ReactNode} from "react";
 // }
 
 export interface PageProps {
-    children: any,
+    children?: any,
 }
